@@ -66,7 +66,7 @@ export function MarkDownEditor({ setCurrentDocument, currentDocument, documentLi
             <ul>
               {documentList.map((doc) => (
                 <li key={doc.id} onClick={() => openDocument(doc)}>
-                  <img src="public/img/file-header-icon.svg" alt="File Icon" />
+                  <img src="/img/file-header-icon.svg" alt="File Icon" />
                   <div className="document-info">
                     <span>{doc.date}</span>
                     <p>{doc.name}</p>
@@ -81,22 +81,22 @@ export function MarkDownEditor({ setCurrentDocument, currentDocument, documentLi
         <div className="header-content">
           <div className="hamburger-menu">
             <img
-              src={isMenuOpen ? "public/img/hamburger-menu-close.svg" : "public/img/hamburger-menu.svg"}
+              src={isMenuOpen ? "/img/hamburger-menu-close.svg" : "/img/hamburger-menu.svg"}
               alt="Hamburger Menu"
               onClick={hamburgerMenu}
             />
           </div>
           <div className="header-inner">
             <div className="file-content">
-              <img src="public/img/file-header-icon.svg" alt="File Icon" />
+              <img src="/img/file-header-icon.svg" alt="File Icon" />
               <p>{currentDocument ? currentDocument.name : "welcome.md"}</p>
             </div>
             <div className="file-delete-save">
               <div className="delete-btn">
-                <img onClick={() => deleteDocument(currentDocument.id)} src="public/img/delete-header-btn.svg" alt="Delete File Icon" />
+                <img onClick={() => deleteDocument(currentDocument.id)} src="/img/delete-header-btn.svg" alt="Delete File Icon" />
               </div>
               <button type="submit" form="markdownForm" className="save-btn">
-                <img src="public/img/save-header-btn.svg" alt="Save File Icon" />
+                <img src="/img/save-header-btn.svg" alt="Save File Icon" />
               </button>
             </div>
           </div>
@@ -106,7 +106,7 @@ export function MarkDownEditor({ setCurrentDocument, currentDocument, documentLi
             <div className="markdown-preview-area">
               <label>{showPreview ? "PREVIEW" : "MARKDOWN"}</label>
               <img
-                src={showPreview ? "public/img/close-eye-icon.svg" : "public/img/open-eye-icon.svg"}
+                src={showPreview ? "/img/close-eye-icon.svg" : "/img/open-eye-icon.svg"}
                 alt=""
                 onClick={togglePreview}
               />
