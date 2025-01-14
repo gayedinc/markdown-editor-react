@@ -1,7 +1,6 @@
 import './App.css';
-import React from 'react';
-import { useState } from 'react';
-import { MarkDownEditor } from './MarkDown.jsx';
+import React, { useRef, useState } from 'react';
+import { MarkDownEditor, DeleteDialog } from './MarkDown.jsx';
 
 const defaultMarkdown = `
   # Welcome to Markdown
@@ -41,6 +40,7 @@ const defaultMarkdown = `
 `;
 
 function App() {
+  const dialogRef = useRef();
   const [markdown, setMarkdown] = useState(defaultMarkdown);
   const [showPreview, setShowPreview] = useState(false); // önizleme olayı
   const [isMenuOpen, setIsMenuOpen] = useState(false); // hamburger menü
@@ -48,11 +48,29 @@ function App() {
     { name: "welcome.md", date: "01 April 2022", id: crypto.randomUUID() },
     { name: "untitled-document.md", date: "26 December 2022", id: crypto.randomUUID() }
   ]);
-  const [currentDocument, setCurrentDocument] = useState(null);
+  const [currentDocument, setCurrentDocument] = useState("");
+
+  const handleOpenDialog = () => {
+    dialogRef.current.showModal(); // modalı aç
+  };
+
+  const handleDelete = () => {
+    if (currentDocument) {
+      const updatedList = documentList.filter(doc => doc.id !== currentDocument.id);
+      setDocumentList(updatedList);
+      setMarkdown("");
+      setCurrentDocument(null);
+    }
+    dialogRef.current.close(); // modalı kapat
+  };
+
+  const cancelDelete = () => {
+    dialogRef.current.close(); // modalı kapat
+  };
 
   return (
     <>
-      <div className="container" style={{ gridTemplateColumns: isMenuOpen ? "250px 1fr" : "" }}>
+      <div className={`container ${isMenuOpen ? "menu-open" : "menu-close"}`}>
         <MarkDownEditor
           documentList={documentList}
           setDocumentList={setDocumentList}
@@ -63,7 +81,12 @@ function App() {
           markdown={markdown}
           showPreview={showPreview}
           setIsMenuOpen={setIsMenuOpen}
-          isMenuOpen={isMenuOpen} />
+          isMenuOpen={isMenuOpen}
+          handleOpenDialog={handleOpenDialog}
+        />
+        <DeleteDialog dialogRef={dialogRef}
+          handleDelete={handleDelete}
+          cancelDelete={cancelDelete} />
       </div>
     </>
   )

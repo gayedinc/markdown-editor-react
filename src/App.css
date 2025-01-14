@@ -4,10 +4,11 @@
 
 .header {
   background-color: #2B2D31;
+  height: 100vh;
 }
 
 .header-modal {
-  font-family: 'Roboto';
+
 }
 
 .menu-header h1 {
@@ -100,23 +101,52 @@
   align-items: center;
 }
 
+textarea {
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+}
+
 .hamburger-menu img {
   cursor: pointer;
 }
 
+.markdown-container {
+  height: 100%;
+}
+
+form {
+  height: 100%;
+}
+
 .hamburger-menu-overlay {
+  height: 100%;
   display: grid;
   padding: 28px 24px;
   background-color: #1d1f22;
   grid-template-rows: max-content max-content max-content 1fr max-content;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  background-color: rgba(21, 22, 25, 1);
+  min-height: 100vh;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.markdown-preview-area img {
+  cursor: pointer;
+  width: 16px;
+  height: 11.2px;
+  align-self: center;
 }
 
 .markdown-preview-area {
   background-color: #F5F5F5;
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
+  height: 42px;
   font-family: 'Roboto';
+  align-content: center;
+  padding-inline: 16px;
 }
 
 .markdown-preview-area label {
@@ -127,8 +157,20 @@
   color: #7C8187;
 }
 
+/* .small-screen-label {
+  margin-inline: 16px;
+} */
+
+.small-screen-label span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .text-container {
   background-color: #fff;
+  height: 100%;
 }
 
 .mobile-textarea, .preview-container {
@@ -136,6 +178,7 @@
   border-style: none;
   outline: none;
   padding: 16px;
+  height: 100vh;
 }
 
 .mobile-textarea {
@@ -220,4 +263,122 @@ pre {
   line-height: 17.58px;
   color: #fff;
   margin-top: 3px;
+}
+
+.doc-name-tablet {
+  display: none;
+}
+
+.file-info {
+  font-family: "Roboto";
+}
+
+dialog {
+  background-color: #fff;
+  border-radius: 4px;
+  border-style: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+}
+
+.dialog-delete {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialog-delete h3 {
+  font-family: "Roboto Slab";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26.38px;
+}
+
+.dialog-delete p {
+  font-family: "Roboto Slab";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.menu-open {
+  overflow: hidden;
+}
+
+.header-open {
+  transform: translateX(250px);
+}
+
+.grid {
+  display: grid;
+}
+
+.none {
+  display: none;
+}
+
+/* Tablet Start */
+
+@media (width >= 768px) {
+
+  .file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .doc-name-tablet {
+    display: block;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 15.23px;
+    color: #7C8187;
+  }
+  
+  .bigscreen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .markdown-preview-area label {
+    width: 100%;
+  }
+
+  .titles {
+    display: flex;
+    width: 100%;
+    span {
+      width: 50%;
+      height: 42px;
+      align-content: center;
+      padding-left: 16px;
+    }
+    span:nth-last-child(1){
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 1px solid #E4E4E4;
+    }
+  }
+
+  .tablet-titles {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .preview-container {
+    border-left: 1px solid #E4E4E4;
+  }
+
+  .preview-container.border-none {
+    border: none;
+  }
+}
+
+/* Desktop Start */
+
+@media (width >= 1280px) {
+
 }
