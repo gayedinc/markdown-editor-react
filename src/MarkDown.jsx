@@ -31,7 +31,7 @@ export function MarkDownEditor({ handleOpenDialog, setCurrentDocument, currentDo
   }
 
   function updatedDocument(e) {
-    e.preventDefault(); // Sayfanın yenilenmesini önle
+    e.preventDefault();
     const form = new FormData(e.target);
     const formObj = Object.fromEntries(form);
     setDocumentList((prevList) =>
