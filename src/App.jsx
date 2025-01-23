@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useRef, useState } from 'react';
+import './assets/darkMode.css';
+import { useState, useRef, useEffect } from "react";
 import { MarkDownEditor, DeleteDialog } from './MarkDown.jsx';
 
 const defaultMarkdown = `
@@ -41,29 +42,51 @@ const defaultMarkdown = `
 
 function App() {
   const dialogRef = useRef();
-  const [markdown, setMarkdown] = useState(defaultMarkdown);
+  const [markdown, setMarkdown] = useState(defaultMarkdown); // markdown alanını tutan state
   const [showPreview, setShowPreview] = useState(false); // önizleme olayı
   const [isMenuOpen, setIsMenuOpen] = useState(false); // hamburger menü
   const [documentList, setDocumentList] = useState([
-    { name: "welcome.md", date: "01 April 2022", id: crypto.randomUUID() },
-    { name: "untitled-document.md", date: "26 December 2022", id: crypto.randomUUID() }
-  ]);
-  const [currentDocument, setCurrentDocument] = useState("");
+    { name: "welcome.md", date: "01 April 2022", id: crypto.randomUUID(), content: defaultMarkdown }
+  ]); // doküman listesini tutan state
+  const [currentDocument, setCurrentDocument] = useState(""); // o anda açık olan dokümanı tutan state
+  const [isDarkMode, setIsDarkMode] = useState(false); // dark mode için olan state
 
+  // Dark tema için useEffect
+  useEffect(() => {
+    const savedTheme = window.localStorage.theme; // localStorage'dan tema bilgisi almak için
+    if (savedTheme === 'dark') { // eğer kayıtlı tema dark ise
+      setIsDarkMode(true); // dark moda geç
+    }
+  }, []);
+
+  // Tema değiştiğinde localStorage'a kaydetmek için useEffect
+  useEffect(() => {
+    window.localStorage.theme = isDarkMode && 'dark'; // isDarkMode true ise dark yap
+    document.body.classList.toggle('dark-mode', isDarkMode); // body'e temayı uygula
+  }, [isDarkMode]); // isDarkMode değişkenini takip et ve her değiştiğinde çalıştır
+
+  // Tema değiştirme fonksiyonu
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode); // dark ise dark yapma, dark değilse dark yap
+  };
+
+  // dialog penceresini açmak için olan fonksiyon
   const handleOpenDialog = () => {
     dialogRef.current.showModal(); // modalı aç
   };
 
+  // doc silmek için olan fonksiyon
   const handleDelete = () => {
     if (currentDocument) {
       const updatedList = documentList.filter(doc => doc.id !== currentDocument.id);
-      setDocumentList(updatedList);
-      setMarkdown("");
-      setCurrentDocument(null);
+      setDocumentList(updatedList); // doc listi günceller
+      setMarkdown(""); // markdown alanını temizler
+      setCurrentDocument(null); // herhangi bir doc seçilmemiş durumuna getirir
     }
     dialogRef.current.close(); // modalı kapat
   };
 
+  // dialog penceresini kapatmak için olan fonksiyon 
   const cancelDelete = () => {
     dialogRef.current.close(); // modalı kapat
   };
@@ -72,6 +95,8 @@ function App() {
     <>
       <div className={`container ${isMenuOpen ? "menu-open" : "menu-close"}`}>
         <MarkDownEditor
+          toggleTheme={toggleTheme}
+          isDarkMode={isDarkMode}
           documentList={documentList}
           setDocumentList={setDocumentList}
           currentDocument={currentDocument}

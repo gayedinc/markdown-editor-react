@@ -43,6 +43,10 @@
   cursor: pointer;
 }
 
+.menu-content button:hover {
+  background-color: #F39765;
+}
+
 .file-content {
   display: flex;
   justify-content: center;
@@ -70,6 +74,14 @@
   padding: 12px;
 }
 
+.save-btn:hover {
+  background-color: #F39765;
+}
+
+.save-text {
+  display: none;
+}
+
 .header-content {
   display: flex;
 }
@@ -81,11 +93,32 @@
   flex-basis: calc(100% - 56px);
 }
 
+.header-inner-left {
+  display: flex;
+}
+
 .header-inner p {
   font-size: 15px;
   font-weight: 400;
   line-height: 17.58px;
   color: #fff;
+}
+
+.header-inner input {
+  background-color: #2B2D31;
+  border: none;
+  outline: none;
+  width: 180px;
+  height: 18px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.58px;
+  color: #fff;
+  caret-color: #E46643;
+}
+
+.markdown-text-desktop {
+  display: none;
 }
 
 .hamburger-menu {
@@ -95,6 +128,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hamburger-menu:hover {
+  background-color: #E46643;
 }
 
 textarea {
@@ -152,10 +189,6 @@ form {
   letter-spacing: 2px;
   color: #7C8187;
 }
-
-/* .small-screen-label {
-  margin-inline: 16px;
-} */
 
 .small-screen-label span {
   width: 100%;
@@ -235,6 +268,7 @@ pre {
 }
 
 .document-list li {
+  font-family: 'Roboto';
   list-style: none;
   display: flex;
   gap: 16.29px;
@@ -278,6 +312,12 @@ dialog {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1001;
+  width: 343px;
+  padding: 24px;
+}
+
+.dialog::backdrop {
+  background-color: rgba(21, 22, 25, 1);
 }
 
 .dialog-delete {
@@ -291,6 +331,7 @@ dialog {
   font-size: 20px;
   font-weight: 700;
   line-height: 26.38px;
+  color: #35393F;
 }
 
 .dialog-delete p {
@@ -298,6 +339,41 @@ dialog {
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
+  color: #7C8187;
+}
+
+.confirm-delete-cancel-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.confirm-delete-btn, .cancel-btn{
+  border-style: none;
+  border-radius: 4px;
+  padding: 11px;
+  width: 100%;
+  color: #FFFFFF;
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.58px;
+}
+
+.confirm-delete-btn {
+  background-color: #E46643;
+}
+
+.confirm-delete-btn:hover {
+  background-color: #F39765;
+}
+
+.cancel-btn {
+  background-color: #7C8187;
+}
+
+.cancel-btn:hover {
+  background-color: #C1C4CB;
 }
 
 .menu-open {
@@ -316,9 +392,42 @@ dialog {
   display: none;
 }
 
+.theme-switch {
+  display: flex;
+  align-items: flex-end;
+}
+
+.switch {
+  appearance: none;
+  background-color: #5a6069;
+  height: 22px;
+  width: 48px;
+  display: inline-flex;
+  margin-inline: 16px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 4px;
+  transition: all 0.8s ease-in-out;
+  cursor: pointer;
+}
+
+.switch:after {
+  content: "";
+  background-color: #fff;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: transform 0.4s ease-out, opacity 0.3s linear;
+}
+
+.switch:checked:after {
+  transform: translateX(180%);
+}
+
+
 /* Tablet Start */
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
 
   .file-info {
     display: flex;
@@ -371,10 +480,43 @@ dialog {
   .preview-container.border-none {
     border: none;
   }
+
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7.83px;
+  }
+  
+  .save-text {
+    display: block;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 17.58px;
+    color: #fff;
+    font-family: Roboto;
+  }
 }
 
 /* Desktop Start */
 
 @media (width >= 1280px) {
+
+  .markdown-text-desktop {
+    display: block;
+    align-content: center;
+    align-self: center;
+    font-family: "Commissioner";
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18.35px;
+    letter-spacing: 5px;
+    text-align: left;
+    padding-inline: 29px;
+    color: #fff;
+    border-right: 1px solid #5a6069;
+    height: 40px;
+  }
 
 }
