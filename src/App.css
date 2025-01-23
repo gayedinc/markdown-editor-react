@@ -303,6 +303,10 @@ pre {
   font-family: "Roboto";
 }
 
+.delete-btn {
+  cursor: pointer;
+}
+
 dialog {
   background-color: #fff;
   border-radius: 4px;
