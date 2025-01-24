@@ -49,26 +49,22 @@ function App() {
     { name: "welcome.md", date: "01 April 2022", id: crypto.randomUUID(), content: defaultMarkdown }
   ]); // doküman listesini tutan state
   const [currentDocument, setCurrentDocument] = useState(""); // o anda açık olan dokümanı tutan state
-  const [isDarkMode, setIsDarkMode] = useState(false); // dark mode için olan state
 
-  // Dark tema için useEffect
+  function getSystemThemePref() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light';
+  }
+
+  const [theme, setTheme] = useState(localStorage.theme || getSystemThemePref()); // dark mode için olan state
+
   useEffect(() => {
-    const savedTheme = window.localStorage.theme; // localStorage'dan tema bilgisi almak için
-    if (savedTheme === 'dark') { // eğer kayıtlı tema dark ise
-      setIsDarkMode(true); // dark moda geç
-    }
-  }, []);
+    document.body.className = theme;
+  }, [theme]);
 
-  // Tema değiştiğinde localStorage'a kaydetmek için useEffect
-  useEffect(() => {
-    window.localStorage.theme = isDarkMode && 'dark'; // isDarkMode true ise dark yap
-    document.body.classList.toggle('dark-mode', isDarkMode); // body'e temayı uygula
-  }, [isDarkMode]); // isDarkMode değişkenini takip et ve her değiştiğinde çalıştır
-
-  // Tema değiştirme fonksiyonu
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode); // dark ise dark yapma, dark değilse dark yap
-  };
+  function handleChangeTheme(e) {
+    const changedTheme = e.target.checked ? 'dark-mode' : 'light';
+    setTheme(changedTheme);
+    localStorage.theme = changedTheme;
+  }
 
   // dialog penceresini açmak için olan fonksiyon
   const handleOpenDialog = () => {
@@ -95,8 +91,8 @@ function App() {
     <>
       <div className={`container ${isMenuOpen ? "menu-open" : "menu-close"}`}>
         <MarkDownEditor
-          toggleTheme={toggleTheme}
-          isDarkMode={isDarkMode}
+          theme={theme}
+          handleChangeTheme={handleChangeTheme}
           documentList={documentList}
           setDocumentList={setDocumentList}
           currentDocument={currentDocument}

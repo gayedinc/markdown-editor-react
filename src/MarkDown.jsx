@@ -1,7 +1,7 @@
 import Markdown from 'marked-react';
 import { useState } from 'react';
 
-export function MarkDownEditor({ toggleTheme, isDarkMode, handleOpenDialog, setCurrentDocument, currentDocument, documentList, setDocumentList, setMarkdown, showPreview, setShowPreview, markdown, setIsMenuOpen, isMenuOpen }) {
+export function MarkDownEditor({ theme, handleChangeTheme, handleOpenDialog, setCurrentDocument, currentDocument, documentList, setDocumentList, setMarkdown, showPreview, setShowPreview, markdown, setIsMenuOpen, isMenuOpen }) {
   const [isEdit, setEdit] = useState(false); // edit durumunu tutan state
   const [tempName, setTempName] = useState(currentDocument?.name || ""); // başlangıçtaki doküman ismini tutan state
 
@@ -106,14 +106,14 @@ export function MarkDownEditor({ toggleTheme, isDarkMode, handleOpenDialog, setC
             </ul>
           </div>
           <label className="theme-switch">
-            <img src={isDarkMode ? "/img/dark-mode-sun.svg" : "/img/light-mode-sun.svg"} alt="Sun Icon" />
+            <img src={theme === "light" ? "/img/light-mode-sun.svg" : "/img/dark-mode-sun.svg"} alt="Sun Icon" />
             <input
               className="switch"
               type="checkbox"
-              checked={isDarkMode}
-              onChange={toggleTheme}
+              defaultChecked={theme === "dark-mode"}
+              onChange={handleChangeTheme}
             />
-            <img src={isDarkMode ? "/img/dark-mode-moon.svg" : "/img/light-mode-moon.svg"} alt="Moon Icon" />
+            <img src={theme === "light" ? "/img/light-mode-moon.svg" : "/img/dark-mode-moon.svg"} alt="Moon Icon" />
           </label>
         </div>
       </div>
