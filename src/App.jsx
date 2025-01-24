@@ -50,19 +50,18 @@ function App() {
   ]); // doküman listesini tutan state
   const [currentDocument, setCurrentDocument] = useState(""); // o anda açık olan dokümanı tutan state
 
+  // localStorage'dan dosyaları alma ve kullanma
+  useEffect(() => {
+    const savedDocuments = localStorage.documentList;
+    if (localStorage.documentList) { // localStorage'da documentList var mı yok mu?
+      setDocumentList(JSON.parse(savedDocuments)); // varsa bu JSON formatındaki veriyi tekrar eski (dizi veya nesne) formatına çevir
+    }
+  }, []);
 
   // localStorage'ın veriyi kaydedebilmesi için JSON formatına dönüştürmeliyiz
   useEffect(() => {
     localStorage.documentList = JSON.stringify(documentList);
   }, [documentList]); // documentList bağımlılık dizisinde olmalı çünkü her değişikliği useEffect izlemeli ve kaydetmeli
-
-  // localStorage'dan dosyaları alma ve kullanma
-  useEffect(() => {
-    const savedDocuments = localStorage.documentList;
-    if (savedDocuments) { // localStorage'da documentList var mı yok mu?
-      setDocumentList(JSON.parse(savedDocuments)); // varsa bu JSON formatındaki veriyi tekrar eski (dizi veya nesne) formatına çevir
-    }
-  }, []);
 
   function getSystemThemePref() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light';
