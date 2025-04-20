@@ -43,6 +43,8 @@ Built with React, this editor instantly converts your content into HTML and disp
 - When the user updates a file and clicks the **“Save Changes”** button, a toast message appears at the top indicating **“Your markdown file has been saved”**.
 - This feature uses the `react-hot-toast` library to provide real-time feedback.
 
+![image](https://github.com/user-attachments/assets/91914daa-9e00-4569-a721-2f7f6b09d4ea)
+
 ### 📱 Responsive Design
 - Mobile-first layout ensures a smooth experience across all devices.
 - Works seamlessly on mobile, tablet, and desktop screens.
