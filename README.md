@@ -1,43 +1,82 @@
-# 📖 Markdown Editör Uygulaması
+# 📖 Markdown Editor Application
 
-Bu projede **marked-react** kütüphanesini kullanarak Markdown yazılarını anında **önizlemeye** dönüştürdüm.
+> A modern editor app enriched with features such as markdown writing, live preview, theme selection, and document management.
 
-## Projenin Özellikleri
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
 
-- **Yeni Dosya Oluşturma:**  
-  Kullanıcılar yeni Markdown dosyaları oluşturabilir.
+## 🔍 Project Overview
 
-- **Dosya Silme:**  
-  Mevcut dosyalar silinebilir.
+**Markdown Editor** is a modern single-page application where users can create, edit, and preview their own markdown documents.  
+Built with React, this editor instantly converts your content into HTML and displays it in the preview area.
 
-- **Başlık ve İçerik Güncelleme:**  
-  Kullanıcılar dosyanın başlığını ve içeriğini güncelleyebilir.
+![image](https://github.com/user-attachments/assets/e9922451-2fcc-4692-9264-adbc157873ab)
 
-- **localStorage Desteği:**  
-  Yeni dosyalar ve yapılan değişiklikler **localStorage** ile kaydedilir böylece kullanıcılar sayfa yenilense bile veriler korunur.
+## 🚀 Key Features
 
-- **Dark-Light Tema Desteği:**  
-  Uygulama kullanıcıların tercihlerine göre **dark** ve **light** tema desteği sunar.
+### 📝 Markdown Writing & Live Preview
+- As users write markdown content, the HTML-converted version is **instantly** shown on the right panel.
+- Built using the `marked-react` library for safe and accurate conversion.
 
-## Hedeflerim
+### 📁 Document Management
+- **Create New Document:** Users can create new markdown documents from the left panel.
 
-- **Kullanıcı Deneyimini İyileştirme:**  
-  Markdown yazıları yazarken kullanıcıların kolayca dosya oluşturup düzenleyebilmesi ve dosyalarını kaydedebilmesi hedefim oldu.
+![image](https://github.com/user-attachments/assets/3715510b-acc3-48db-ba21-a976c9a41059)
 
-- **Dinamik ve Etkileşimli Uygulama Tasarımı:**  
-  Kullanıcı etkileşimlerine hızlı yanıt veren, sürekli güncellenebilen ve dinamik özelliklere sahip bir editör deneyimi yaratmayı hedefledim.
+- **Delete Document:** Any existing document can be deleted.
 
-- **Veri Güvenliği ve Kaydetme:**  
-  Kullanıcıların yazdığı verilerin kaybolmaması için **localStorage** desteğiyle güvenli bir veri saklama altyapısı sağlamayı hedefledim.
+![image](https://github.com/user-attachments/assets/5bdbf351-2680-40a9-a443-ad053ec785f1)
 
-- **Responsive Tasarım:**  
-  Farklı ekran boyutlarına uygun, kullanıcı dostu ve mobil öncelikli bir tasarım hedefledim.
+- **Update Title and Content:** Each document can be renamed, and its content can be updated individually.
 
-- **Kodun Anlaşılabilirliği ve Sürdürülebilirliği:**  
-  Kodun anlaşılabilirliğini artırmak için açıklama satırları ekleyerek işleyişi detaylıca anlattım. Böylece kodun sürdürülebilirliğini sağladım.
+### 💾 Persistent Storage (localStorage Support)
+- All created documents and their content are saved in **localStorage**.
+- Even if the page is refreshed, data is retained and users can continue from where they left off.
 
-- **Veri Kaybı Önleme:**  
-  Kullanıcıların yazdığı verilerin kaybolmaması için **localStorage** ile güvenli bir veri saklama altyapısı sağlamayı hedefledim.
+### 🌙 Theme Toggle (Light / Dark Mode)
+- Users can toggle between light and dark mode based on their preference.
+- The selected theme is saved in `localStorage` and remains persistent across sessions.
 
-- **Mobil Uyumluluk ve Cihaz Desteği:**  
-  **Responsive tasarım** ile mobil öncelikli bir yaklaşım benimsedim. Böylece farklı cihazlarda da uyumlu bir deneyim sağladım. 📱💻
+### 🛎️ Toast Notification (File Saved)
+- When the user updates a file and clicks the **“Save Changes”** button, a toast message appears at the top indicating **“Your markdown file has been saved”**.
+- This feature uses the `react-hot-toast` library to provide real-time feedback.
+
+### 📱 Responsive Design
+- Mobile-first layout ensures a smooth experience across all devices.
+- Works seamlessly on mobile, tablet, and desktop screens.
+
+### 💡 User Experience & Code Quality
+- Minimal and distraction-free interface provides a focused writing environment.
+- Components are modular and clearly commented to support long-term maintainability.
+
+## 🛠️ Technologies & Tools
+
+- React  
+- JavaScript (ES6)  
+- CSS  
+- marked-react  
+- react-hot-toast  
+- localStorage  
+- Responsive Design (Flexbox, Media Queries)
+
+🟢 **Live Demo**  
+🔗 [https://markdown-editor-react-tau.vercel.app](https://markdown-editor-react-tau.vercel.app)
+
+## 📂 Project Structure
+
+📁 public  
+📁 src  
+ ┣ 📁 assets  
+ ┃ ┣ 📄 darkMode.css             # Dark mode styling  
+ ┃ ┗ 📄 reset.css                # CSS reset rules  
+ ┣ 📄 App.css                    # Global application styles  
+ ┣ 📄 App.jsx                    # Main app component  
+ ┣ 📄 MarkDown.jsx               # Markdown editor and preview component  
+ ┗ 📄 main.jsx                   # React DOM entry point  
+
+📄 index.html                    # HTML template  
+📄 .gitignore                    # Files ignored by Git  
+📄 eslint.config.js              # ESLint configuration  
+📄 package-lock.json             # Project dependency lock file  
+📄 README.md                     # Project documentation
