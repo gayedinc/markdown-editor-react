@@ -1,5 +1,6 @@
 import Markdown from 'marked-react';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 export function MarkDownEditor({ theme, handleChangeTheme, handleOpenDialog, setCurrentDocument, currentDocument, documentList, setDocumentList, setMarkdown, showPreview, setShowPreview, markdown, setIsMenuOpen, isMenuOpen }) {
   const [isEdit, setEdit] = useState(false); // edit durumunu tutan state
@@ -76,6 +77,7 @@ export function MarkDownEditor({ theme, handleChangeTheme, handleOpenDialog, set
           : doc // diğer doclar aynı kalır
       )
     );
+    toast.success("Markdown dosyanız kaydedildi");
   }
 
   const screenWidth = window.innerWidth; // tarayıcı penceresinin genişliğini px olarak alır

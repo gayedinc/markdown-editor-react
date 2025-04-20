@@ -43,10 +43,6 @@
   cursor: pointer;
 }
 
-.menu-content button:hover {
-  background-color: #F39765;
-}
-
 .file-content {
   display: flex;
   justify-content: center;
@@ -72,10 +68,7 @@
   background-color: #E46643;
   border-radius: 4px;
   padding: 12px;
-}
-
-.save-btn:hover {
-  background-color: #F39765;
+  cursor: pointer;
 }
 
 .save-text {
@@ -128,10 +121,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.hamburger-menu:hover {
-  background-color: #E46643;
 }
 
 textarea {
@@ -276,10 +265,6 @@ pre {
   cursor: pointer;
 }
 
-.document-list p:hover {
-  color: #E46643;
-}
-
 .document-list span {
   font-size: 13px;
   font-weight: 300;
@@ -368,16 +353,8 @@ dialog {
   background-color: #E46643;
 }
 
-.confirm-delete-btn:hover {
-  background-color: #F39765;
-}
-
 .cancel-btn {
   background-color: #7C8187;
-}
-
-.cancel-btn:hover {
-  background-color: #C1C4CB;
 }
 
 .menu-open {
@@ -398,7 +375,9 @@ dialog {
 
 .theme-switch {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
 }
 
 .switch {
@@ -432,6 +411,30 @@ dialog {
 /* Tablet Start */
 
 @media (min-width: 768px) {
+
+  .save-btn:hover {
+    background-color: #F39765;
+  }
+
+  .menu-content button:hover {
+    background-color: #F39765;
+  }
+
+  .hamburger-menu:hover {
+    background-color: #E46643;
+  }
+
+  .document-list p:hover {
+    color: #E46643;
+  }
+
+  .confirm-delete-btn:hover {
+    background-color: #F39765;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #C1C4CB;
+  }
 
   .file-info {
     display: flex;

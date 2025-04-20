@@ -2,6 +2,7 @@ import './App.css';
 import './assets/darkMode.css';
 import { useState, useRef, useEffect } from "react";
 import { MarkDownEditor, DeleteDialog } from './MarkDown.jsx';
+import { Toaster } from 'react-hot-toast';
 
 const defaultMarkdown = `
   # Welcome to Markdown
@@ -103,6 +104,7 @@ function App() {
   return (
     <>
       <div className={`container ${isMenuOpen ? "menu-open" : "menu-close"}`}>
+        <Toaster position="top-center" reverseOrder={false} />
         <MarkDownEditor
           theme={theme}
           handleChangeTheme={handleChangeTheme}
