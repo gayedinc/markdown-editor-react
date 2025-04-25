@@ -110,6 +110,7 @@ Open the URL in your browser to begin using the Markdown Editor.
 
 ##  Project Structure
 
+```bash
  public  
  src  
  ┣  assets  
