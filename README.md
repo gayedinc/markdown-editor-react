@@ -73,7 +73,7 @@ To run this project on your local machine, follow the steps below:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/markdown-editor-react.git
+git clone https://github.com/gayedinc/markdown-editor-react.git
 ```
 
 If Git is not installed on your system, download it from [https://git-scm.com](https://git-scm.com).
